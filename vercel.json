@@ -1,0 +1,39 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "build/**",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/static/(.*)",
+      "dest": "/static/$1"
+    },
+    {
+      "src": "/favicon.ico",
+      "dest": "/favicon.ico"
+    },
+    {
+      "src": "/manifest.json",
+      "dest": "/manifest.json"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ],
+  "env": {
+    "REACT_APP_API_URL": "@react_app_api_url",
+    "REACT_APP_FIREBASE_API_KEY": "@react_app_firebase_api_key",
+    "REACT_APP_FIREBASE_AUTH_DOMAIN": "@react_app_firebase_auth_domain",
+    "REACT_APP_FIREBASE_PROJECT_ID": "@react_app_firebase_project_id",
+    "REACT_APP_OPENAI_API_KEY": "@react_app_openai_api_key"
+  },
+  "functions": {
+    "app/api/**/*.js": {
+      "runtime": "nodejs18.x"
+    }
+  }
+}
